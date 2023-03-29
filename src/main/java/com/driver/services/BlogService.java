@@ -17,7 +17,6 @@ import java.util.List;
 public class BlogService {
     @Autowired
     BlogRepository blogRepository1;
-
     @Autowired
     UserRepository userRepository1;
     @Autowired
@@ -34,12 +33,11 @@ public class BlogService {
 
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
-        try {
+        blogRepository1.deleteById(blogId);
+        /*try {
             Blog blog = blogRepository1.findById(blogId).get();
-            for (Image image : blog.getImageList()) {
-                imageService1.deleteImage(image.getId());
-            }
+            for (Image image : blog.getImageList()) imageService1.deleteImage(image.getId());
             blogRepository1.deleteById(blogId);
-        }catch (Exception e){}
+        }catch (Exception e){}*/
     }
 }
